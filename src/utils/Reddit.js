@@ -1,8 +1,8 @@
 const SCOPE = "identity mysubreddits read vote";
-const REDIRECT_URI = "http://127.0.0.1:5173";
+const REDIRECT_URI = "https://rlite.netlify.app/";
 const RANDOM_STRING = "poop";
 const RESPONSE_TYPE = "token";
-const CLIENT_ID = "2DdL6Vd21WmsU6BNHYccwA";
+const CLIENT_ID = "JSwZ2WJZK1xTgShiC8iCKg";
 const URL = `https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&state=${RANDOM_STRING}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}`;
 
 const Reddit = {
