@@ -116,8 +116,8 @@ function Post({
         </svg>
       </div>
       <div className="flex flex-col items-center text-center gap-4 w-3/4 mx-14">
-        <div className="flex w-full justify-start">
-          <h5>{subredditName} ·</h5>
+        <div className="flex flex-col w-full justify-start items-start">
+          <h5 className="text-xl">{subredditName}</h5>
           <div className="flex items-center">
             <svg
               className="h-3"
@@ -200,13 +200,6 @@ function Post({
             <p className="text-xs md:text-sm">{numComments}</p>
           </div>
         </div>
-      </div>
-      <div className="self-center">
-        {thumbnail && !video && !postImage && (
-          <a href={url} target="_blank">
-            <img src={thumbnail} alt="" />
-          </a>
-        )}
       </div>
     </div>
   );
