@@ -4,12 +4,14 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 import Reddit from "./utils/Reddit";
+import Comments from "./pages/Comments";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
   const isAllowed = JSON.parse(sessionStorage.getItem("allowed")) || null;
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     if (theme === "light") {
@@ -45,12 +47,33 @@ function App() {
             />
           }
         >
-          <Route index element={<Home isOpen={isOpen} user={user} />} />
+          <Route
+            index
+            element={
+              <Home
+                isOpen={isOpen}
+                user={user}
+                posts={posts}
+                setPosts={setPosts}
+              />
+            }
+          />
           <Route
             path="/:subreddit"
-            element={<Home isOpen={isOpen} user={user} />}
+            element={
+              <Home
+                isOpen={isOpen}
+                user={user}
+                posts={posts}
+                setPosts={setPosts}
+              />
+            }
           />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/post/:post"
+            element={<Comments user={user} posts={posts} setPosts={setPosts} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -4,8 +4,7 @@ import SubredditNav from "../components/SubredditNav";
 import Reddit from "../utils/Reddit";
 import { useParams } from "react-router-dom";
 
-function Home({ isOpen, user }) {
-  const [posts, setPosts] = useState([]);
+function Home({ isOpen, user, posts, setPosts }) {
   const [subreddits, setSubreddits] = useState([]);
   const params = useParams();
   const signInError = sessionStorage.getItem("declined") || null;

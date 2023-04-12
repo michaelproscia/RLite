@@ -76,6 +76,9 @@ const Reddit = {
       },
     });
   },
+  getComments() {
+    return fetch("https://www.reddit.com/r/AskReddit/comments/12j384c.json");
+  },
 };
 
 export default Reddit;
