@@ -18,8 +18,12 @@ function Home({ isOpen, user, posts, setPosts }) {
       fetch(`https://www.reddit.com/r/${params.subreddit}.json`)
         .then((res) => res.json())
         .then((postsArr) => setPosts(postsArr.data.children));
+    } else if (params.subreddit && user) {
+      Reddit.getSubredditPosts(params.subreddit)
+        .then((res) => res.json())
+        .then((postsArr) => setPosts(postsArr.data.children));
     } else {
-      Reddit.getSubredditPosts(params.subreddit || "popular")
+      Reddit.getSubredditPosts("popular")
         .then((res) => res.json())
         .then((postsArr) => setPosts(postsArr.data.children));
     }
