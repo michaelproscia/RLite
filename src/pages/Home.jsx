@@ -10,23 +10,24 @@ function Home({ isOpen, user, posts, setPosts }) {
   const signInError = sessionStorage.getItem("declined") || null;
 
   useEffect(() => {
-    if (!params.subreddit && !user) {
+    if (!params.subreddit) {
       fetch("https://www.reddit.com/r/popular.json")
         .then((res) => res.json())
         .then((postsArr) => setPosts(postsArr.data.children));
-    } else if (params.subreddit && !user) {
+    } else if (params.subreddit) {
       fetch(`https://www.reddit.com/r/${params.subreddit}.json`)
         .then((res) => res.json())
         .then((postsArr) => setPosts(postsArr.data.children));
-    } else if (params.subreddit && user) {
-      Reddit.getSubredditPosts(params.subreddit)
-        .then((res) => res.json())
-        .then((postsArr) => setPosts(postsArr.data.children));
-    } else {
-      Reddit.getSubredditPosts("popular")
-        .then((res) => res.json())
-        .then((postsArr) => setPosts(postsArr.data.children));
     }
+    // } else if (params.subreddit && user) {
+    //   Reddit.getSubredditPosts(params.subreddit)
+    //     .then((res) => res.json())
+    //     .then((postsArr) => setPosts(postsArr.data.children));
+    // } else {
+    //   Reddit.getSubredditPosts("popular")
+    //     .then((res) => res.json())
+    //     .then((postsArr) => setPosts(postsArr.data.children));
+    // }
   }, [params]);
 
   useEffect(() => {
