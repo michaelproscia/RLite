@@ -87,7 +87,7 @@ function Post({
 
   return (
     <div className="relative justify-center flex mb-8 m-auto shadow shadow-slate-500 p-5 xl:p-2 xl:max-w-6xl dark:text-white dark:bg-slate-700 dark:shadow-none">
-      <div className="absolute left-5 top-1/4 flex flex-col items-center gap-2">
+      <div className="absolute left-5 mt-2 flex flex-col items-center gap-2">
         <svg
           height="24"
           viewBox="0 0 24 24"
