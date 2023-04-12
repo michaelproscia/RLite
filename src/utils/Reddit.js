@@ -60,12 +60,16 @@ const Reddit = {
   },
   getSubredditPosts(params) {
     const accessToken = this.getAccessToken();
-    return fetch(`https://oauth.reddit.com/r/${params}/hot/`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    if (params !== "popular") {
+      return fetch(`https://oauth.reddit.com/r/${params}/hot/`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+    } else {
+      return fetch("https://www.reddit.com/r/popular.json");
+    }
   },
   vote(id, dir) {
     const accessToken = this.getAccessToken();
